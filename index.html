@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI工具导航站 - 免费好用的ChatGPT、Midjourney、Claude等AI工具大全，持续更新">
+    <title>AI工具导航站 | 发现最好用的AI工具</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body { font-family: system-ui, -apple-system, sans-serif; }
+        .tool-card { transition: all 0.3s; }
+        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+    </style>
+</head>
+<body class="bg-gray-950 text-gray-200">
+    <!-- 顶部导航 -->
+    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-robot text-3xl text-blue-400"></i>
+                <h1 class="text-2xl font-bold">AI工具导航站</h1>
+            </div>
+            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" 
+               class="flex items-center gap-2 text-sm hover:text-blue-400">
+                <i class="fa-brands fa-github"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero区 -->
+    <header class="max-w-7xl mx-auto px-6 py-16 text-center">
+        <h2 class="text-5xl font-bold mb-4">发现最好用的 AI 工具</h2>
+        <p class="text-xl text-gray-400 mb-8">免费 • 实用 • 持续更新 • 100+ AI工具一站式导航</p>
+        <div class="max-w-xl mx-auto">
+            <input id="searchInput" 
+                   type="text" 
+                   placeholder="搜索工具名称、用途或分类（如：写作、图像、编程）..."
+                   class="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-lg focus:outline-none focus:border-blue-400">
+        </div>
+    </header>
+
+    <!-- 工具列表 -->
+    <main class="max-w-7xl mx-auto px-6 pb-20">
+        <div id="toolsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 工具卡片会在这里动态生成 -->
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-900 py-12 text-center text-gray-500 text-sm">
+        <p>© 2026 AI工具导航站 | 由 helia2008 维护 • 使用 Cloudflare + GitHub 免费托管</p>
+        <p class="mt-2">有好工具想推荐？欢迎在 GitHub 提交 Issue</p>
+    </footer>
+
+    <script>
+        // 工具数据（你可以在这里轻松添加更多工具）
+        const tools = [
+            { name: "ChatGPT", category: "聊天AI", desc: "最强大的通用AI对话工具", url: "https://chatgpt.com", icon: "🤖" },
+            { name: "Claude", category: "聊天AI", desc: "Anthropic出品，长文本处理专家", url: "https://claude.ai", icon: "🧠" },
+            { name: "Grok", category: "聊天AI", desc: "xAI实时知识工具", url: "https://grok.x.ai", icon: "🚀" },
+            { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画工具（Discord）", url: "https://midjourney.com", icon: "🎨" },
+            { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
+            { name: "DALL·E 3", category: "图像生成", desc: "OpenAI官方图像生成", url: "https://chatgpt.com", icon: "🌟" },
+            { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
+            { name: "Perplexity", category: "搜索AI", desc: "实时AI搜索引擎", url: "https://perplexity.ai", icon: "🔍" },
+            { name: "Notion AI", category: "写作工具", desc: "笔记+AI写作助手", url: "https://notion.so", icon: "📝" },
+            { name: "Gamma", category: "演示工具", desc: "AI一键生成PPT", url: "https://gamma.app", icon: "📊" },
+            // 你可以继续在这里复制粘贴添加更多工具
+        ];
+
+        // 初始化Tailwind
+        function initTailwind() {
+            tailwind.config = {
+                content: ["*"],
+                theme: { extend: {} }
+            };
+        }
+
+        // 渲染工具卡片
+        function renderTools(filteredTools) {
+            const container = document.getElementById('toolsContainer');
+            container.innerHTML = '';
+            
+            if (filteredTools.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">没有找到匹配的工具，试试其他关键词吧~</div>`;
+                return;
+            }
+            
+            filteredTools.forEach(tool => {
+                const card = document.createElement('a');
+                card.href = tool.url;
+                card.target = "_blank";
+                card.className = "tool-card block bg-gray-900 border border-gray-800 rounded-3xl p-6 hover:border-blue-400";
+                card.innerHTML = `
+                    <div class="text-4xl mb-4">${tool.icon}</div>
+                    <h3 class="text-xl font-semibold mb-1">${tool.name}</h3>
+                    <p class="text-sm text-blue-400 mb-3">${tool.category}</p>
+                    <p class="text-gray-400 text-sm">${tool.desc}</p>
+                    <div class="mt-6 text-xs flex items-center text-gray-500">
+                        <i class="fa-solid fa-external-link-alt mr-1"></i> 立即访问
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // 搜索功能
+        function setupSearch() {
+            const input = document.getElementById('searchInput');
+            input.addEventListener('input', (e) => {
+                const keyword = e.target.value.toLowerCase().trim();
+                const filtered = tools.filter(tool => 
+                    tool.name.toLowerCase().includes(keyword) ||
+                    tool.category.toLowerCase().includes(keyword) ||
+                    tool.desc.toLowerCase().includes(keyword)
+                );
+                renderTools(filtered);
+            });
+        }
+
+        // 启动
+        window.onload = function() {
+            initTailwind();
+            renderTools(tools);
+            setupSearch();
+        };
+    </script>
+</body>
+</html>
