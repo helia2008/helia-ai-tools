@@ -57,18 +57,32 @@
     <script>
         // 工具数据（你可以在这里轻松添加更多工具）
         const tools = [
-            { name: "ChatGPT", category: "聊天AI", desc: "最强大的通用AI对话工具", url: "https://chatgpt.com", icon: "🤖" },
-            { name: "Claude", category: "聊天AI", desc: "Anthropic出品，长文本处理专家", url: "https://claude.ai", icon: "🧠" },
-            { name: "Grok", category: "聊天AI", desc: "xAI实时知识工具", url: "https://grok.x.ai", icon: "🚀" },
-            { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画工具（Discord）", url: "https://midjourney.com", icon: "🎨" },
-            { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
-            { name: "DALL·E 3", category: "图像生成", desc: "OpenAI官方图像生成", url: "https://chatgpt.com", icon: "🌟" },
-            { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
-            { name: "Perplexity", category: "搜索AI", desc: "实时AI搜索引擎", url: "https://perplexity.ai", icon: "🔍" },
-            { name: "Notion AI", category: "写作工具", desc: "笔记+AI写作助手", url: "https://notion.so", icon: "📝" },
-            { name: "Gamma", category: "演示工具", desc: "AI一键生成PPT", url: "https://gamma.app", icon: "📊" },
-            // 你可以继续在这里复制粘贴添加更多工具
-        ];
+    { name: "ChatGPT", category: "聊天AI", desc: "最强大的通用AI对话工具", url: "https://chatgpt.com", icon: "🤖" },
+    { name: "Claude", category: "聊天AI", desc: "长文本处理专家", url: "https://claude.ai", icon: "🧠" },
+    { name: "Grok", category: "聊天AI", desc: "xAI实时知识工具", url: "https://grok.x.ai", icon: "🚀" },
+    { name: "Gemini", category: "聊天AI", desc: "Google多模态AI", url: "https://gemini.google.com", icon: "🔥" },
+    { name: "DeepSeek", category: "聊天AI", desc: "国产开源强力AI", url: "https://deepseek.com", icon: "🇨🇳" },
+    { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画工具", url: "https://midjourney.com", icon: "🎨" },
+    { name: "DALL·E 3", category: "图像生成", desc: "OpenAI官方图像生成", url: "https://chatgpt.com", icon: "🌟" },
+    { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
+    { name: "Leonardo.AI", category: "图像生成", desc: "高质量AI艺术生成", url: "https://leonardo.ai", icon: "🖌️" },
+    { name: "Flux", category: "图像生成", desc: "最新黑马AI绘图", url: "https://flux.ai", icon: "⚡" },
+    { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
+    { name: "Perplexity", category: "搜索AI", desc: "实时AI搜索引擎", url: "https://perplexity.ai", icon: "🔍" },
+    { name: "Notion AI", category: "写作工具", desc: "笔记+AI写作助手", url: "https://notion.so", icon: "📝" },
+    { name: "Gamma", category: "演示工具", desc: "AI一键生成PPT", url: "https://gamma.app", icon: "📊" },
+    { name: "ElevenLabs", category: "语音工具", desc: "AI语音合成神器", url: "https://elevenlabs.io", icon: "🔊" },
+    { name: "Runway", category: "视频工具", desc: "AI视频生成", url: "https://runwayml.com", icon: "🎥" },
+    { name: "CapCut AI", category: "视频工具", desc: "剪映AI功能", url: "https://capcut.com", icon: "✂️" },
+    { name: "Sunno", category: "音乐工具", desc: "AI音乐生成", url: "https://suno.com", icon: "🎵" },
+    { name: "Blackbox", category: "编程工具", desc: "AI代码搜索", url: "https://blackbox.ai", icon: "📦" },
+    { name: "V0", category: "设计工具", desc: "AI生成UI界面", url: "https://v0.dev", icon: "🖥️" },
+    { name: "Arcade", category: "游戏工具", desc: "AI游戏生成", url: "https://arcade.dev", icon: "🎮" },
+    { name: "Luma AI", category: "3D工具", desc: "AI 3D模型生成", url: "https://lumalabs.ai", icon: "🌐" },
+    { name: "Ideogram", category: "图像生成", desc: "文字转图像专家", url: "https://ideogram.ai", icon: "✍️" },
+    { name: "Kling AI", category: "视频工具", desc: "国产AI视频生成", url: "https://klingai.com", icon: "🇨🇳" },
+    { name: "Pika", category: "视频工具", desc: "AI短视频生成", url: "https://pika.art", icon: "🎬" }
+];
 
         // 初始化Tailwind
         function initTailwind() {
