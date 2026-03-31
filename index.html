@@ -3,174 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AI工具导航站 - 免费好用的ChatGPT、Claude、Midjourney、Grok等25+热门AI工具大全。实时更新，分类清晰，一站式发现最好用的AI工具。">
-    <meta name="keywords" content="AI工具, ChatGPT, Claude, Midjourney, Grok, Gemini, AI导航, 免费AI工具, AI绘画, AI写作">
-    <meta name="author" content="helia2008">
-    
-    <!-- Google Search Console 验证标签（把下面这行替换成你刚才复制的Google代码） -->
-    <meta name="google-site-verification" content="0sXBJ-IIjt3PV1kRY-8qDoMoWnx5EchOfhifTlo0hN0" />
-    
-    <!-- 百度站长平台 验证标签（把下面这行替换成你刚才复制的百度代码） -->
-    <meta name="baidu-site-verification" content="codeva-Hr2J6xE74V" />
-    
-    <title>AI工具导航站 | 25+免费AI工具大全 - ChatGPT/Claude/Midjourney实时导航</title>
+    <meta name="description" content="未来AI工具导航站 - 25+ 最强AI工具一站式发现 | ChatGPT / Claude / Midjourney / Grok 等">
+    <meta name="keywords" content="AI工具, ChatGPT, Claude, Midjourney, Grok, AI导航, 未来科技, Glassmorphism">
+    <title>AI·未来 | 高级AI工具导航站</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { font-family: system-ui, -apple-system, sans-serif; }
-        .tool-card { transition: all 0.3s; }
-        .tool-card:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1); }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&display=swap');
+        
+        :root {
+            --neon-blue: #00f0ff;
+            --neon-purple: #a855f7;
+        }
+        
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            background: linear-gradient(90deg, #00f0ff, #a855f7, #00f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: neon-glow 3s infinite alternate;
+        }
+        
+        @keyframes neon-glow {
+            from { text-shadow: 0 0 10px #00f0ff; }
+            to { text-shadow: 0 0 30px #a855f7, 0 0 40px #00f0ff; }
+        }
+        
+        .glass-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 0 40px -10px var(--neon-blue);
+            border-color: rgba(0, 240, 255, 0.4);
+        }
+        
+        .nav-glass {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+        }
+        
+        .orb {
+            animation: float 6s ease-in-out infinite;
+        }
     </style>
 </head>
-<body class="bg-gray-950 text-gray-200">
-    <!-- 顶部导航 -->
-    <nav class="bg-gray-900 border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
+    <!-- 导航栏 -->
+    <nav class="nav-glass sticky top-0 z-50 border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <i class="fa-solid fa-robot text-3xl text-blue-400"></i>
-                <h1 class="text-2xl font-bold">AI工具导航站</h1>
+                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-2xl">🌌</div>
+                <h1 class="text-2xl font-bold tracking-tighter">AI·未来</h1>
             </div>
-            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" 
-               class="flex items-center gap-2 text-sm hover:text-blue-400">
-                <i class="fa-brands fa-github"></i>
-                <span>GitHub</span>
+            <div class="flex gap-8 text-lg">
+                <a href="index.html" class="hover:text-cyan-400 transition-colors">首页</a>
+                <a href="about.html" class="hover:text-cyan-400 transition-colors">关于我们</a>
+                <a href="privacy.html" class="hover:text-cyan-400 transition-colors">隐私政策</a>
+            </div>
+            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400">
+                <i class="fa-brands fa-github"></i> GitHub
             </a>
         </div>
     </nav>
 
-    <!-- Hero区 -->
-    <header class="max-w-7xl mx-auto px-6 py-16 text-center">
-        <h2 class="text-5xl font-bold mb-4">发现最好用的 AI 工具</h2>
-        <p class="text-xl text-gray-400 mb-8">免费 • 实用 • 持续更新 • 100+ AI工具一站式导航</p>
-        <div class="max-w-xl mx-auto">
-            <input id="searchInput" 
-                   type="text" 
-                   placeholder="搜索工具名称、用途或分类（如：写作、图像、编程）..."
-                   class="w-full px-6 py-4 bg-gray-900 border border-gray-700 rounded-2xl text-lg focus:outline-none focus:border-blue-400">
+    <!-- Hero 区 -->
+    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- 背景光效 -->
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-cyan-900/20 to-black"></div>
+        <div class="absolute top-20 left-20 w-96 h-96 bg-cyan-400 rounded-full blur-3xl opacity-20 orb"></div>
+        <div class="absolute bottom-32 right-32 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 orb" style="animation-delay: 2s;"></div>
+        
+        <div class="max-w-5xl mx-auto px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl border border-white/20 mb-8">
+                <span class="text-cyan-400 text-sm font-medium">2026 最新</span>
+                <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+            </div>
+            
+            <h1 class="hero-title text-7xl md:text-8xl font-bold tracking-tighter mb-6">
+                发现未来<br>AI 工具
+            </h1>
+            
+            <p class="text-2xl text-gray-300 max-w-2xl mx-auto mb-12">
+                25+ 最强 AI 工具一站式导航<br>
+                实时更新 · 玻璃态科技设计
+            </p>
+            
+            <div class="max-w-xl mx-auto">
+                <div class="relative">
+                    <input id="searchInput" 
+                           type="text" 
+                           placeholder="搜索 AI 工具、分类或功能（写作、绘画、编程...）"
+                           class="w-full px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/30 rounded-3xl text-xl focus:outline-none focus:border-cyan-400 placeholder-gray-400">
+                    <i class="fa-solid fa-magnifying-glass absolute right-8 top-1/2 -translate-y-1/2 text-2xl text-cyan-400"></i>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <p class="text-sm text-gray-400 mb-3">向下探索</p>
+            <i class="fa-solid fa-chevron-down text-3xl animate-bounce"></i>
         </div>
     </header>
 
     <!-- 工具列表 -->
-    <main class="max-w-7xl mx-auto px-6 pb-20">
-        <div id="toolsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <!-- 工具卡片会在这里动态生成 -->
+    <main class="max-w-7xl mx-auto px-8 pb-24">
+        <h2 class="text-4xl font-semibold mb-12 text-center">精选 AI 工具</h2>
+        
+        <div id="toolsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- 工具卡片由 JS 动态生成 -->
         </div>
     </main>
-<!-- 支持本站打赏模块 -->
-<div class="max-w-7xl mx-auto px-6 py-12 bg-gray-900 border-t border-gray-800">
-    <div class="text-center">
-        <p class="text-gray-400 mb-4">如果本站帮到你，欢迎支持一下～</p>
-        <div class="flex justify-center gap-8 flex-wrap">
-            <!-- 微信打赏 -->
-            <div class="text-center">
-                <p class="text-sm text-green-400 mb-2">微信打赏</p>
-                <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="微信打赏" class="w-32 h-32 mx-auto rounded-xl border border-gray-700">
-            </div>
-            <!-- 支付宝打赏 -->
-            <div class="text-center">
-                <p class="text-sm text-blue-400 mb-2">支付宝打赏</p>
-                <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="支付宝打赏" class="w-32 h-32 mx-auto rounded-xl border border-gray-700">
+
+    <!-- 打赏模块（保留你之前添加的） -->
+    <div class="max-w-7xl mx-auto px-8 py-16 bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border-t border-white/10">
+        <div class="text-center">
+            <p class="text-gray-400 mb-6 text-xl">如果这个未来导航站帮到你，欢迎支持一下</p>
+            <div class="flex justify-center gap-12 flex-wrap">
+                <div class="text-center">
+                    <p class="text-green-400 mb-3 text-lg">微信打赏</p>
+                    <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="微信" class="w-40 h-40 mx-auto rounded-3xl shadow-2xl">
+                </div>
+                <div class="text-center">
+                    <p class="text-blue-400 mb-3 text-lg">支付宝打赏</p>
+                    <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="支付宝" class="w-40 h-40 mx-auto rounded-3xl shadow-2xl">
+                </div>
             </div>
         </div>
-        <p class="text-xs text-gray-500 mt-6">感谢每一位支持者 ❤️ 你的支持是我持续更新的动力</p>
     </div>
-</div>
+
     <!-- 页脚 -->
-    <footer class="bg-gray-900 py-12 text-center text-gray-500 text-sm">
-    <div class="flex justify-center gap-8 mb-6">
-        <a href="index.html" class="hover:text-blue-400">首页</a>
-        <a href="about.html" class="hover:text-blue-400">关于我们</a>
-        <a href="privacy.html" class="hover:text-blue-400">隐私政策</a>
-        <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="hover:text-blue-400">GitHub</a>
-    </div>
-    <p>© 2026 AI工具导航站 | helia.us.ci • Cloudflare + GitHub 免费托管</p>
-</footer>
+    <footer class="bg-black/80 py-12 text-center text-gray-400 text-sm">
+        <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-center gap-8">
+            <a href="index.html" class="hover:text-cyan-400">首页</a>
+            <a href="about.html" class="hover:text-cyan-400">关于我们</a>
+            <a href="privacy.html" class="hover:text-cyan-400">隐私政策</a>
+            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="hover:text-cyan-400">GitHub</a>
+        </div>
+        <p class="mt-8">© 2026 AI·未来 | helia.us.ci • Cloudflare + GitHub 驱动</p>
+    </footer>
 
     <script>
-        // 工具数据（你可以在这里轻松添加更多工具）
+        // 25个工具数据（可随时让我帮你增加）
         const tools = [
-    { name: "ChatGPT", category: "聊天AI", desc: "最强大的通用AI对话工具", url: "https://chatgpt.com", icon: "🤖" },
-    { name: "Claude", category: "聊天AI", desc: "长文本处理专家", url: "https://claude.ai", icon: "🧠" },
-    { name: "Grok", category: "聊天AI", desc: "xAI实时知识工具", url: "https://grok.x.ai", icon: "🚀" },
-    { name: "Gemini", category: "聊天AI", desc: "Google多模态AI", url: "https://gemini.google.com", icon: "🔥" },
-    { name: "DeepSeek", category: "聊天AI", desc: "国产开源强力AI", url: "https://deepseek.com", icon: "🇨🇳" },
-    { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画工具", url: "https://midjourney.com", icon: "🎨" },
-    { name: "DALL·E 3", category: "图像生成", desc: "OpenAI官方图像生成", url: "https://chatgpt.com", icon: "🌟" },
-    { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
-    { name: "Leonardo.AI", category: "图像生成", desc: "高质量AI艺术生成", url: "https://leonardo.ai", icon: "🖌️" },
-    { name: "Flux", category: "图像生成", desc: "最新黑马AI绘图", url: "https://flux.ai", icon: "⚡" },
-    { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
-    { name: "Perplexity", category: "搜索AI", desc: "实时AI搜索引擎", url: "https://perplexity.ai", icon: "🔍" },
-    { name: "Notion AI", category: "写作工具", desc: "笔记+AI写作助手", url: "https://notion.so", icon: "📝" },
-    { name: "Gamma", category: "演示工具", desc: "AI一键生成PPT", url: "https://gamma.app", icon: "📊" },
-    { name: "ElevenLabs", category: "语音工具", desc: "AI语音合成神器", url: "https://elevenlabs.io", icon: "🔊" },
-    { name: "Runway", category: "视频工具", desc: "AI视频生成", url: "https://runwayml.com", icon: "🎥" },
-    { name: "CapCut AI", category: "视频工具", desc: "剪映AI功能", url: "https://capcut.com", icon: "✂️" },
-    { name: "Sunno", category: "音乐工具", desc: "AI音乐生成", url: "https://suno.com", icon: "🎵" },
-    { name: "Blackbox", category: "编程工具", desc: "AI代码搜索", url: "https://blackbox.ai", icon: "📦" },
-    { name: "V0", category: "设计工具", desc: "AI生成UI界面", url: "https://v0.dev", icon: "🖥️" },
-    { name: "Arcade", category: "游戏工具", desc: "AI游戏生成", url: "https://arcade.dev", icon: "🎮" },
-    { name: "Luma AI", category: "3D工具", desc: "AI 3D模型生成", url: "https://lumalabs.ai", icon: "🌐" },
-    { name: "Ideogram", category: "图像生成", desc: "文字转图像专家", url: "https://ideogram.ai", icon: "✍️" },
-    { name: "Kling AI", category: "视频工具", desc: "国产AI视频生成", url: "https://klingai.com", icon: "🇨🇳" },
-    { name: "Pika", category: "视频工具", desc: "AI短视频生成", url: "https://pika.art", icon: "🎬" }
-];
+            { name: "ChatGPT", category: "聊天AI", desc: "最强大通用AI", url: "https://chatgpt.com", icon: "🤖" },
+            { name: "Claude", category: "聊天AI", desc: "长文本处理专家", url: "https://claude.ai", icon: "🧠" },
+            { name: "Grok", category: "聊天AI", desc: "xAI实时知识", url: "https://grok.x.ai", icon: "🚀" },
+            { name: "Gemini", category: "聊天AI", desc: "Google多模态AI", url: "https://gemini.google.com", icon: "🔥" },
+            { name: "DeepSeek", category: "聊天AI", desc: "国产开源强模型", url: "https://deepseek.com", icon: "🇨🇳" },
+            { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画", url: "https://midjourney.com", icon: "🎨" },
+            { name: "DALL·E 3", category: "图像生成", desc: "OpenAI图像生成", url: "https://chatgpt.com", icon: "🌟" },
+            { name: "Flux", category: "图像生成", desc: "最新黑马AI绘图", url: "https://flux.ai", icon: "⚡" },
+            { name: "Leonardo.AI", category: "图像生成", desc: "高质量艺术生成", url: "https://leonardo.ai", icon: "🖌️" },
+            { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
+            { name: "Perplexity", category: "搜索AI", desc: "实时AI搜索引擎", url: "https://perplexity.ai", icon: "🔍" },
+            { name: "Notion AI", category: "写作工具", desc: "笔记+AI写作", url: "https://notion.so", icon: "📝" },
+            { name: "Gamma", category: "演示工具", desc: "AI一键生成PPT", url: "https://gamma.app", icon: "📊" },
+            { name: "ElevenLabs", category: "语音工具", desc: "AI语音合成", url: "https://elevenlabs.io", icon: "🔊" },
+            { name: "Runway", category: "视频工具", desc: "AI视频生成", url: "https://runwayml.com", icon: "🎥" },
+            { name: "CapCut AI", category: "视频工具", desc: "剪映AI功能", url: "https://capcut.com", icon: "✂️" },
+            { name: "Sunno", category: "音乐工具", desc: "AI音乐生成", url: "https://suno.com", icon: "🎵" },
+            { name: "Blackbox", category: "编程工具", desc: "AI代码搜索", url: "https://blackbox.ai", icon: "📦" },
+            { name: "V0", category: "设计工具", desc: "AI生成UI界面", url: "https://v0.dev", icon: "🖥️" },
+            { name: "Luma AI", category: "3D工具", desc: "AI 3D模型生成", url: "https://lumalabs.ai", icon: "🌐" },
+            { name: "Ideogram", category: "图像生成", desc: "文字转图像专家", url: "https://ideogram.ai", icon: "✍️" },
+            { name: "Kling AI", category: "视频工具", desc: "国产AI视频生成", url: "https://klingai.com", icon: "🇨🇳" },
+            { name: "Pika", category: "视频工具", desc: "AI短视频生成", url: "https://pika.art", icon: "🎬" },
+            { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
+            { name: "Arcade", category: "游戏工具", desc: "AI游戏生成", url: "https://arcade.dev", icon: "🎮" }
+        ];
 
-        // 初始化Tailwind
-        function initTailwind() {
-            tailwind.config = {
-                content: ["*"],
-                theme: { extend: {} }
-            };
-        }
-
-        // 渲染工具卡片
-        function renderTools(filteredTools) {
+        function renderTools(filtered) {
             const container = document.getElementById('toolsContainer');
             container.innerHTML = '';
-            
-            if (filteredTools.length === 0) {
-                container.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400">没有找到匹配的工具，试试其他关键词吧~</div>`;
-                return;
-            }
-            
-            filteredTools.forEach(tool => {
+            filtered.forEach(tool => {
                 const card = document.createElement('a');
                 card.href = tool.url;
                 card.target = "_blank";
-                card.className = "tool-card block bg-gray-900 border border-gray-800 rounded-3xl p-6 hover:border-blue-400";
+                card.className = "glass-card block p-8 rounded-3xl group";
                 card.innerHTML = `
-                    <div class="text-4xl mb-4">${tool.icon}</div>
-                    <h3 class="text-xl font-semibold mb-1">${tool.name}</h3>
-                    <p class="text-sm text-blue-400 mb-3">${tool.category}</p>
-                    <p class="text-gray-400 text-sm">${tool.desc}</p>
-                    <div class="mt-6 text-xs flex items-center text-gray-500">
-                        <i class="fa-solid fa-external-link-alt mr-1"></i> 立即访问
+                    <div class="text-6xl mb-6 transition-transform group-hover:scale-110">${tool.icon}</div>
+                    <h3 class="text-2xl font-semibold mb-2">${tool.name}</h3>
+                    <p class="text-cyan-400 text-sm mb-4">${tool.category}</p>
+                    <p class="text-gray-400">${tool.desc}</p>
+                    <div class="mt-8 flex items-center text-xs text-cyan-400">
+                        <span>立即访问</span>
+                        <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
-        // 搜索功能
         function setupSearch() {
             const input = document.getElementById('searchInput');
             input.addEventListener('input', (e) => {
-                const keyword = e.target.value.toLowerCase().trim();
-                const filtered = tools.filter(tool => 
-                    tool.name.toLowerCase().includes(keyword) ||
-                    tool.category.toLowerCase().includes(keyword) ||
-                    tool.desc.toLowerCase().includes(keyword)
+                const keyword = e.target.value.toLowerCase();
+                const filtered = tools.filter(t => 
+                    t.name.toLowerCase().includes(keyword) ||
+                    t.category.toLowerCase().includes(keyword) ||
+                    t.desc.toLowerCase().includes(keyword)
                 );
-                renderTools(filtered);
+                renderTools(filtered.length ? filtered : tools);
             });
         }
 
-        // 启动
-        window.onload = function() {
-            initTailwind();
+        window.onload = () => {
             renderTools(tools);
             setupSearch();
+            // 替换你的打赏二维码直链（如果之前有）
         };
     </script>
 </body>
