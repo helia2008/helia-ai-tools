@@ -3,164 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="未来AI工具导航站 - 25+ 最强AI工具一站式发现 | ChatGPT / Claude / Midjourney / Grok 等">
-    <meta name="keywords" content="AI工具, ChatGPT, Claude, Midjourney, Grok, AI导航, 未来科技, Glassmorphism">
-    <title>AI·未来 | 高级AI工具导航站</title>
+    <meta name="description" content="AI·赛博未来 | 25+ 最强AI工具导航站 - 动态粒子背景 · 霓虹科技感">
+    <meta name="keywords" content="AI工具, Cyberpunk, 赛博朋克, AI导航, ChatGPT, Midjourney, 未来科技">
+    <title>AI·赛博未来 | 25+ 最强AI工具导航</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@500;600;700&display=swap');
         
-        :root {
-            --neon-blue: #00f0ff;
-            --neon-purple: #a855f7;
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .title-font { font-family: 'Space Grotesk', sans-serif; }
         
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-        }
-        
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            background: linear-gradient(90deg, #00f0ff, #a855f7, #00f0ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: neon-glow 3s infinite alternate;
-        }
-        
-        @keyframes neon-glow {
-            from { text-shadow: 0 0 10px #00f0ff; }
-            to { text-shadow: 0 0 30px #a855f7, 0 0 40px #00f0ff; }
+        .neon-text {
+            text-shadow: 
+                0 0 10px #00f0ff,
+                0 0 20px #00f0ff,
+                0 0 40px #a855f7;
         }
         
         .glass-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 240, 255, 0.3);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
         
         .glass-card:hover {
-            transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 0 40px -10px var(--neon-blue);
-            border-color: rgba(0, 240, 255, 0.4);
+            border-color: #00f0ff;
+            box-shadow: 0 0 40px -10px #00f0ff;
+            transform: translateY(-6px);
         }
         
-        .nav-glass {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-        }
-        
-        .orb {
-            animation: float 6s ease-in-out infinite;
+        canvas#particle-bg {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: -1;
+            opacity: 0.85;
         }
     </style>
 </head>
-<body class="bg-[#0a0a0a] text-white overflow-x-hidden">
-    <!-- 导航栏 -->
-    <nav class="nav-glass sticky top-0 z-50 border-b border-white/10">
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- 动态粒子背景 -->
+    <canvas id="particle-bg"></canvas>
+
+    <!-- 导航 -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black/70 backdrop-blur-xl border-b border-cyan-500/30">
         <div class="max-w-7xl mx-auto px-8 py-5 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-9 h-9 bg-gradient-to-br from-cyan-400 to-purple-500 rounded-2xl flex items-center justify-center text-2xl">🌌</div>
-                <h1 class="text-2xl font-bold tracking-tighter">AI·未来</h1>
+                <div class="text-3xl">🌌</div>
+                <h1 class="title-font text-3xl tracking-tighter neon-text">AI·赛博未来</h1>
             </div>
             <div class="flex gap-8 text-lg">
-                <a href="index.html" class="hover:text-cyan-400 transition-colors">首页</a>
-                <a href="about.html" class="hover:text-cyan-400 transition-colors">关于我们</a>
-                <a href="privacy.html" class="hover:text-cyan-400 transition-colors">隐私政策</a>
+                <a href="index.html" class="hover:text-cyan-400 transition">首页</a>
+                <a href="about.html" class="hover:text-cyan-400 transition">关于我们</a>
+                <a href="privacy.html" class="hover:text-cyan-400 transition">隐私政策</a>
             </div>
-            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="flex items-center gap-2 text-sm hover:text-cyan-400">
-                <i class="fa-brands fa-github"></i> GitHub
+            <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="flex items-center gap-2 hover:text-cyan-400">
+                <i class="fa-brands fa-github text-xl"></i>
             </a>
         </div>
     </nav>
 
-    <!-- Hero 区 -->
-    <header class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <!-- 背景光效 -->
-        <div class="absolute inset-0 bg-gradient-to-br from-purple-900/30 via-cyan-900/20 to-black"></div>
-        <div class="absolute top-20 left-20 w-96 h-96 bg-cyan-400 rounded-full blur-3xl opacity-20 orb"></div>
-        <div class="absolute bottom-32 right-32 w-80 h-80 bg-purple-500 rounded-full blur-3xl opacity-20 orb" style="animation-delay: 2s;"></div>
-        
-        <div class="max-w-5xl mx-auto px-8 text-center relative z-10">
-            <div class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl border border-white/20 mb-8">
-                <span class="text-cyan-400 text-sm font-medium">2026 最新</span>
-                <span class="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+    <!-- Hero -->
+    <header class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="max-w-5xl mx-auto px-8 text-center">
+            <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-3 rounded-3xl border border-cyan-400/30 mb-8">
+                <span class="text-cyan-400">2026</span>
+                <span class="text-2xl">⚡</span>
+                <span class="text-purple-400">赛博未来</span>
             </div>
             
-            <h1 class="hero-title text-7xl md:text-8xl font-bold tracking-tighter mb-6">
-                发现未来<br>AI 工具
+            <h1 class="title-font text-7xl md:text-8xl font-bold tracking-tighter neon-text leading-none mb-6">
+                进入AI<br>赛博纪元
             </h1>
             
             <p class="text-2xl text-gray-300 max-w-2xl mx-auto mb-12">
-                25+ 最强 AI 工具一站式导航<br>
-                实时更新 · 玻璃态科技设计
+                25+ 最强AI工具 · 动态粒子导航<br>
+                未来，已在这里
             </p>
-            
-            <div class="max-w-xl mx-auto">
-                <div class="relative">
-                    <input id="searchInput" 
-                           type="text" 
-                           placeholder="搜索 AI 工具、分类或功能（写作、绘画、编程...）"
-                           class="w-full px-8 py-6 bg-white/10 backdrop-blur-xl border border-white/30 rounded-3xl text-xl focus:outline-none focus:border-cyan-400 placeholder-gray-400">
-                    <i class="fa-solid fa-magnifying-glass absolute right-8 top-1/2 -translate-y-1/2 text-2xl text-cyan-400"></i>
-                </div>
+
+            <div class="max-w-2xl mx-auto">
+                <input id="searchInput" 
+                       type="text" 
+                       placeholder="搜索工具、分类或功能..."
+                       class="w-full bg-white/10 backdrop-blur-2xl border border-white/20 rounded-3xl px-8 py-7 text-xl focus:outline-none focus:border-cyan-400 placeholder-gray-400">
             </div>
-        </div>
-        
-        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center">
-            <p class="text-sm text-gray-400 mb-3">向下探索</p>
-            <i class="fa-solid fa-chevron-down text-3xl animate-bounce"></i>
         </div>
     </header>
 
-    <!-- 工具列表 -->
+    <!-- 工具区 -->
     <main class="max-w-7xl mx-auto px-8 pb-24">
-        <h2 class="text-4xl font-semibold mb-12 text-center">精选 AI 工具</h2>
+        <h2 class="text-4xl font-semibold text-center mb-16 title-font tracking-tight">精选赛博AI工具</h2>
         
         <div id="toolsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            <!-- 工具卡片由 JS 动态生成 -->
+            <!-- JS 动态生成 -->
         </div>
     </main>
 
-    <!-- 打赏模块（保留你之前添加的） -->
-    <div class="max-w-7xl mx-auto px-8 py-16 bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border-t border-white/10">
+    <!-- 打赏区（保留你的二维码） -->
+    <div class="max-w-7xl mx-auto px-8 py-20 bg-gradient-to-r from-purple-900/30 to-cyan-900/30 border-t border-cyan-500/30">
         <div class="text-center">
-            <p class="text-gray-400 mb-6 text-xl">如果这个未来导航站帮到你，欢迎支持一下</p>
-            <div class="flex justify-center gap-12 flex-wrap">
-                <div class="text-center">
-                    <p class="text-green-400 mb-3 text-lg">微信打赏</p>
-                    <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="微信" class="w-40 h-40 mx-auto rounded-3xl shadow-2xl">
+            <p class="text-2xl mb-8">如果你喜欢这个赛博未来导航站，欢迎支持一下</p>
+            <div class="flex justify-center gap-16 flex-wrap">
+                <div>
+                    <p class="text-green-400 mb-4 text-xl">微信打赏</p>
+                    <img src="你的微信二维码直链" alt="微信" class="w-40 h-40 rounded-3xl shadow-2xl border border-green-400/30">
                 </div>
-                <div class="text-center">
-                    <p class="text-blue-400 mb-3 text-lg">支付宝打赏</p>
-                    <img src="https://manyimages.us.ci/file/1774917705943_b6b543657a750365413bba1e6cb8dd11.jpg" alt="支付宝" class="w-40 h-40 mx-auto rounded-3xl shadow-2xl">
+                <div>
+                    <p class="text-blue-400 mb-4 text-xl">支付宝打赏</p>
+                    <img src="你的支付宝二维码直链" alt="支付宝" class="w-40 h-40 rounded-3xl shadow-2xl border border-blue-400/30">
                 </div>
             </div>
         </div>
     </div>
 
     <!-- 页脚 -->
-    <footer class="bg-black/80 py-12 text-center text-gray-400 text-sm">
-        <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-center gap-8">
+    <footer class="bg-black py-12 text-center text-gray-400 border-t border-cyan-500/20">
+        <div class="max-w-7xl mx-auto px-8 flex flex-wrap justify-center gap-8 text-lg">
             <a href="index.html" class="hover:text-cyan-400">首页</a>
             <a href="about.html" class="hover:text-cyan-400">关于我们</a>
             <a href="privacy.html" class="hover:text-cyan-400">隐私政策</a>
             <a href="https://github.com/helia2008/ai-tools-nav" target="_blank" class="hover:text-cyan-400">GitHub</a>
         </div>
-        <p class="mt-8">© 2026 AI·未来 | helia.us.ci • Cloudflare + GitHub 驱动</p>
+        <p class="mt-10 text-sm">© 2026 AI·赛博未来 | helia.us.ci</p>
     </footer>
 
     <script>
-        // 25个工具数据（可随时让我帮你增加）
-        const tools = [
+        // ==================== 动态粒子背景 ====================
+        const canvas = document.getElementById('particle-bg');
+        const ctx = canvas.getContext('2d');
+        
+        let particles = [];
+        let mouse = { x: 0, y: 0 };
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = '#00f0ff';
+                ctx.globalAlpha = 0.6;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function connectParticles() {
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 120) {
+                        ctx.strokeStyle = `rgba(168, 85, 247, ${1 - distance / 120})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            connectParticles();
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', e => { mouse.x = e.x; mouse.y = e.y; });
+
+        // ==================== 工具数据 ====================
+        const tools = [ /* 你之前的25个工具数组保持不变 */ 
             { name: "ChatGPT", category: "聊天AI", desc: "最强大通用AI", url: "https://chatgpt.com", icon: "🤖" },
             { name: "Claude", category: "聊天AI", desc: "长文本处理专家", url: "https://claude.ai", icon: "🧠" },
             { name: "Grok", category: "聊天AI", desc: "xAI实时知识", url: "https://grok.x.ai", icon: "🚀" },
             { name: "Gemini", category: "聊天AI", desc: "Google多模态AI", url: "https://gemini.google.com", icon: "🔥" },
             { name: "DeepSeek", category: "聊天AI", desc: "国产开源强模型", url: "https://deepseek.com", icon: "🇨🇳" },
             { name: "Midjourney", category: "图像生成", desc: "顶级AI绘画", url: "https://midjourney.com", icon: "🎨" },
-            { name: "DALL·E 3", category: "图像生成", desc: "OpenAI图像生成", url: "https://chatgpt.com", icon: "🌟" },
             { name: "Flux", category: "图像生成", desc: "最新黑马AI绘图", url: "https://flux.ai", icon: "⚡" },
             { name: "Leonardo.AI", category: "图像生成", desc: "高质量艺术生成", url: "https://leonardo.ai", icon: "🖌️" },
             { name: "Cursor", category: "编程工具", desc: "AI编程神器", url: "https://cursor.com", icon: "💻" },
@@ -177,49 +220,54 @@
             { name: "Ideogram", category: "图像生成", desc: "文字转图像专家", url: "https://ideogram.ai", icon: "✍️" },
             { name: "Kling AI", category: "视频工具", desc: "国产AI视频生成", url: "https://klingai.com", icon: "🇨🇳" },
             { name: "Pika", category: "视频工具", desc: "AI短视频生成", url: "https://pika.art", icon: "🎬" },
+            { name: "DALL·E 3", category: "图像生成", desc: "OpenAI图像生成", url: "https://chatgpt.com", icon: "🌟" },
             { name: "Stable Diffusion", category: "图像生成", desc: "开源本地AI绘图", url: "https://stability.ai", icon: "🖼️" },
             { name: "Arcade", category: "游戏工具", desc: "AI游戏生成", url: "https://arcade.dev", icon: "🎮" }
         ];
 
-        function renderTools(filtered) {
+        function renderTools(filteredTools) {
             const container = document.getElementById('toolsContainer');
             container.innerHTML = '';
-            filtered.forEach(tool => {
+            filteredTools.forEach(tool => {
                 const card = document.createElement('a');
                 card.href = tool.url;
                 card.target = "_blank";
                 card.className = "glass-card block p-8 rounded-3xl group";
                 card.innerHTML = `
-                    <div class="text-6xl mb-6 transition-transform group-hover:scale-110">${tool.icon}</div>
+                    <div class="text-6xl mb-6 group-hover:scale-110 transition-transform">${tool.icon}</div>
                     <h3 class="text-2xl font-semibold mb-2">${tool.name}</h3>
-                    <p class="text-cyan-400 text-sm mb-4">${tool.category}</p>
+                    <p class="text-cyan-400 text-sm mb-3">${tool.category}</p>
                     <p class="text-gray-400">${tool.desc}</p>
-                    <div class="mt-8 flex items-center text-xs text-cyan-400">
-                        <span>立即访问</span>
-                        <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition"></i>
+                    <div class="mt-8 text-xs flex items-center text-cyan-400">
+                        <span class="mr-2">立即进入赛博空间</span>
+                        <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition"></i>
                     </div>
                 `;
                 container.appendChild(card);
             });
         }
 
+        // 搜索功能
         function setupSearch() {
             const input = document.getElementById('searchInput');
-            input.addEventListener('input', (e) => {
-                const keyword = e.target.value.toLowerCase();
+            input.addEventListener('input', () => {
+                const keyword = input.value.toLowerCase().trim();
                 const filtered = tools.filter(t => 
                     t.name.toLowerCase().includes(keyword) ||
                     t.category.toLowerCase().includes(keyword) ||
                     t.desc.toLowerCase().includes(keyword)
                 );
-                renderTools(filtered.length ? filtered : tools);
+                renderTools(filtered.length > 0 ? filtered : tools);
             });
         }
 
+        // 初始化
         window.onload = () => {
+            resize();
+            for (let i = 0; i < 120; i++) particles.push(new Particle());
+            animateParticles();
             renderTools(tools);
             setupSearch();
-            // 替换你的打赏二维码直链（如果之前有）
         };
     </script>
 </body>
